@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CardView: UIView {
+class CardView: UIButton {
     
     @IBInspectable
     var rank: Int = 10 { didSet { setNeedsDisplay(); setNeedsLayout() }}

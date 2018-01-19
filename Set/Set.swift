@@ -82,9 +82,11 @@ class Set {
 
 
     init(numberOfSetsOfCards: Int) {
-        for _ in 1...(numberOfSetsOfCards)*3 {
+        var grid = Grid(layout: .dimensions(rowCount: 4, columnCount: 6))
+        for index in 1...(numberOfSetsOfCards)*3 {
             let card = Card()
             cards.append(card)
+//            grid.add(card)
         }
         print("the number of cards in cards is: \(cards.count)")
         print("the number of sets of cards is: \(numberOfSetsOfCards)")

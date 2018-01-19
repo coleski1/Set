@@ -11,11 +11,42 @@ import UIKit
 
 class Card: Hashable {
     
+//    var description: String
+    
+    
     var hashValue: Int { return identifier}
     
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.identifier == rhs.identifier
     }
+    
+    
+//    let diamond: UIImage = UIImage
+//
+//    let topCorner = CGPoint(
+//
+//
+//
+//    enum Shape: String {
+//
+//        case diamond = "diamond"
+//        case oval = "oval"
+//        case squiggle = "squiggle"
+//
+//        static var all = [Shape.diamond, .oval, .squiggle]
+//
+//        var description: String { return rawValue}
+//
+//    }
+    
+//    enum cardColor: String, CustomStringConvertible {
+//        case green
+//        case red
+//        case blue
+//
+//        static var all = [cardColor.green, .red, .blue]
+//        var description: String { return rawValue}
+//    }
     
     var cardColor: UIColor = UIColor.red
     var strokeWidth = 1
@@ -24,19 +55,19 @@ class Card: Hashable {
     var setMyTitle = ""
 
     var partOfSet = false
-    
+
     func willBeFaceUp() {
         cardColor = UIColor.green
     }
     var isFaceUp = false
     var selected = false
     private var identifier: Int
-    
+
     lazy var attributedString = NSMutableAttributedString(
         string: setMyTitle,
         attributes: [NSAttributedStringKey.strokeWidth:strokeWidth,
                      NSAttributedStringKey.foregroundColor: cardColor.withAlphaComponent(alpha)])
-    
+
     static var identifierFactory = 0
     
     static func getUniqueIdentifier() -> Int {
@@ -45,6 +76,7 @@ class Card: Hashable {
     }
     
     init() {
+        
         self.identifier  = Card.getUniqueIdentifier()
     }
 }
