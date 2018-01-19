@@ -82,11 +82,11 @@ class Set {
 
 
     init(numberOfSetsOfCards: Int) {
-        var grid = Grid(layout: .dimensions(rowCount: 4, columnCount: 6))
-        for index in 1...(numberOfSetsOfCards)*3 {
+        var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4))
+        
+        for _ in 1...(numberOfSetsOfCards)*3 {
             let card = Card()
             cards.append(card)
-//            grid.add(card)
         }
         print("the number of cards in cards is: \(cards.count)")
         print("the number of sets of cards is: \(numberOfSetsOfCards)")
@@ -108,21 +108,6 @@ class Set {
                 card.strokeWidth = -1
             }
         }
-//        for index in stride(from: 0,to: cards.count, by: 3){
-//            cards[index].setMyTitle = shapes[0]
-//            cards[index].alpha = opacities[0]
-//            cards[index].cardColor = colors[0]
-//        }
-//        for index in stride(from: 1,to: cards.count, by: 3){
-//            cards[index].setMyTitle = shapes[1]
-//            cards[index].alpha = opacities[1]
-//            cards[index].cardColor = colors[1]
-//        }
-//        for index in stride(from: 2,to: cards.count, by: 3){
-//            cards[index].setMyTitle = shapes[2]
-//            cards[index].strokeWidth = Int(opacities[2])
-//            cards[index].cardColor = colors[2]
-//        }
         
         for index in 0...11 {
             cards[index].isFaceUp = true

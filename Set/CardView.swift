@@ -101,6 +101,126 @@ class CardView: UIButton {
             .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
             .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
     }
+    
+    //draws an oval
+    //    override func draw(_ rect: CGRect) {
+    //        let path = UIBezierPath()
+    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY-radius))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius))
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY+radius))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius))
+    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+    //        path.lineWidth = 3.0
+    //        UIColor.blue.setFill()
+    //        UIColor.red.setStroke()
+    //        path.stroke()
+    //        path.fill()
+    //    }
+    
+    //creates three ovals
+    //    override func draw(_ rect: CGRect) {
+    //        let path = UIBezierPath()
+    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY-radius))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius))
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY+radius))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius))
+    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+    //        path.lineWidth = 3.0
+    //        UIColor.blue.setFill()
+    //        UIColor.red.setStroke()
+    //        path.stroke()
+    //        path.fill()
+    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    //
+    //        let secondPath = UIBezierPath()
+    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    //        secondPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY-radius + radius*3))
+    //        secondPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius + radius*3))
+    //        secondPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY+radius + radius*3))
+    //        secondPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius + radius*3 ))
+    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+    //        secondPath.lineWidth = 3.0
+    //        UIColor.blue.setFill()
+    //        UIColor.red.setStroke()
+    //        secondPath.stroke()
+    //        secondPath.fill()
+    //
+    //        let thirdPath = UIBezierPath()
+    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    //        thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY-radius - radius*3))
+    //        thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius - radius*3))
+    //        thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY+radius - radius*3))
+    //        thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius*3 ))
+    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+    //        thirdPath.lineWidth = 3.0
+    //        UIColor.blue.setFill()
+    //        UIColor.red.setStroke()
+    //        thirdPath.stroke()
+    //        thirdPath.fill()
+    //
+    //    }
+    //draws a diamond
+    //    override func draw(_ rect: CGRect) {
+    //        let path = UIBezierPath()
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
+    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
+    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
+    //        path.close()
+    //
+    //        path.lineWidth = 5.0
+    //        UIColor.red.setStroke()
+    //        UIColor.blue.setFill()
+    //        path.stroke()
+    //        path.fill()
+    //
+    //    }
+    //
+    //three diamonds
+    //    override func draw(_ rect: CGRect) {
+    //        let path = UIBezierPath()
+    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY + radius*3))
+    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius + radius*3))
+    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY + radius*3))
+    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
+    //        path.close()
+    //
+    //        path.lineWidth = 3.0
+    //        UIColor.red.setStroke()
+    //        UIColor.blue.setFill()
+    //        path.stroke()
+    //        path.fill()
+    //
+    //        let secondPath = UIBezierPath()
+    //        secondPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
+    //        secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
+    //        secondPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
+    //        secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
+    //        secondPath.close()
+    //
+    //        secondPath.lineWidth = 3.0
+    //        UIColor.red.setStroke()
+    //        UIColor.blue.setFill()
+    //        secondPath.stroke()
+    //        secondPath.fill()
+    //
+    //        let thirdPath = UIBezierPath()
+    //        thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY - radius*3))
+    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius - radius*3))
+    //        thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY - radius*3))
+    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
+    //        thirdPath.close()
+    //
+    //        thirdPath.lineWidth = 3.0
+    //        UIColor.red.setStroke()
+    //        UIColor.blue.setFill()
+    //        thirdPath.stroke()
+    //        thirdPath.fill()
+    //
+    //    }
+    
 
 
 }
@@ -110,10 +230,14 @@ class CardView: UIButton {
 extension CardView {
     //how to make constants
     private struct SizeRatio {
+        static let radiusBounds: CGFloat = 0.10
         static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
         static let cornerOffsetToCornerRadius: CGFloat = 0.33
         static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
+    }
+    private var radius: CGFloat {
+        return bounds.size.height * SizeRatio.radiusBounds
     }
     private var cornerRadius: CGFloat {
         return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
