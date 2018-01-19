@@ -61,12 +61,7 @@ class Set {
                         chosenCards.removeAll()
                     }
                 } else {
-                    for card in chosenCards {
-                        card.selected = false
-                    }
                     
-                    score = score - 5
-                    chosenCards.removeAll()
                 }
             } else {
                 for card in chosenCards {
