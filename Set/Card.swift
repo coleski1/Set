@@ -9,7 +9,14 @@
 import Foundation
 import UIKit
 
-class Card {
+class Card: Hashable {
+    
+    var hashValue: Int { return identifier}
+    
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
     
 //    var description: String
     
@@ -59,6 +66,14 @@ class Card {
         
         static var all = [CardAlpha.full, .semi, .minor]
         
+    }
+    
+    enum Number: Int {
+        case one = 1
+        case two
+        case three
+        
+        static var all = [Number.one, .two, .three]
     }
     
     var cardColor = UIColor.green
