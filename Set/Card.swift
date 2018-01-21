@@ -120,3 +120,21 @@ class Card: Hashable {
         self.identifier  = Card.getUniqueIdentifier()
     }
 }
+
+extension UIColor {
+    convenience init(_ colorString: ColorString) {
+        switch colorString {
+        case .red:
+            self.init(red:1.0, green:0.0, blue:0.0, alpha:1.0)
+        case .green:
+            self.init(red:0.0, green:1.0, blue:0.0, alpha:1.0)
+        case .blue:
+            self.init(red:0.0, green:0.0, blue:1.0, alpha:1.0)
+        }
+    }
+    enum ColorString: String  {
+        case red
+        case green
+        case blue
+    }
+}
