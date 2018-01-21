@@ -13,65 +13,65 @@ class Set {
     var chosenCards:[Card] = []
     
     func chooseCard(at index: Int){
-        if cards[index].selected == true {
-           cards[index].selected = false
-            for pleaseCheck in 0...chosenCards.count {
-                if chosenCards[pleaseCheck].hashValue == cards[index].hashValue {
-                    chosenCards.remove(at: pleaseCheck)
-                    break
-                }
-            }
-        } else if(chosenCards.count<3) {
-            chosenCards.append(cards[index])
-            cards[index].selected = true
-        }
-        
-        if chosenCards.count==3{
-            let card0 = chosenCards[0]
-            let card1 = chosenCards[1]
-            let card2 = chosenCards[2]
-            
-            print("cardColor: \(card0.cardColor) \(card1.cardColor) \(card2.cardColor)")
-            
-            if ((card0.cardColor == card1.cardColor && card0.cardColor == card2.cardColor) || (card1.cardColor != card2.cardColor && card0.cardColor != card1.cardColor && card0.cardColor != card2.cardColor)) {
-                print("made it past cardColor")
-                
-                
-                if((card0.alpha == card1.alpha && card0.alpha == card2.alpha)||((card0.alpha != card1.alpha) || (Int(card0.alpha + 0.001) != card1.strokeWidth) && (card0.alpha != card2.alpha) || (Int(card0.alpha + 0.001) != card2.strokeWidth) && (card1.alpha != card2.alpha) || (Int(card1.alpha + 0.001) != card2.strokeWidth))) {
-                    print("made it past the alpha")
-                    
-                    if ((card0.setMyTitle == card1.setMyTitle && card0.setMyTitle == card2.setMyTitle)||(card0.setMyTitle != card1.setMyTitle && card0.setMyTitle != card2.setMyTitle && card1.setMyTitle != card2.setMyTitle)) {
-                        print("now through setTitle")
-                        
-                        for card in chosenCards {
-                            card.partOfSet = true
-                            card.isFaceUp = false
-                            card.selected = false
-                        }
-                        score = score + 3
-                        chosenCards.removeAll()
-                        print("This is a match")
-                        
-                    } else {
-                        for card in chosenCards {
-                            card.selected = false
-                        }
-                        
-                        score = score - 5
-                        chosenCards.removeAll()
-                    }
-                } else {
-                    
-                }
-            } else {
-                for card in chosenCards {
-                    card.selected = false
-                }
-                
-                score = score - 5
-                chosenCards.removeAll()
-            }
-        }
+//        if cards[index].selected == true {
+//           cards[index].selected = false
+//            for pleaseCheck in 0...chosenCards.count {
+//                if chosenCards[pleaseCheck].hashValue == cards[index].hashValue {
+//                    chosenCards.remove(at: pleaseCheck)
+//                    break
+//                }
+//            }
+//        } else if(chosenCards.count<3) {
+//            chosenCards.append(cards[index])
+//            cards[index].selected = true
+//        }
+//
+//        if chosenCards.count==3{
+//            let card0 = chosenCards[0]
+//            let card1 = chosenCards[1]
+//            let card2 = chosenCards[2]
+//
+//            print("cardColor: \(card0.cardColor) \(card1.cardColor) \(card2.cardColor)")
+//
+//            if ((card0.cardColor == card1.cardColor && card0.cardColor == card2.cardColor) || (card1.cardColor != card2.cardColor && card0.cardColor != card1.cardColor && card0.cardColor != card2.cardColor)) {
+//                print("made it past cardColor")
+//
+//
+//                if((card0.alpha == card1.alpha && card0.alpha == card2.alpha)||((card0.alpha != card1.alpha) || (Int(card0.alpha + 0.001) != card1.strokeWidth) && (card0.alpha != card2.alpha) || (Int(card0.alpha + 0.001) != card2.strokeWidth) && (card1.alpha != card2.alpha) || (Int(card1.alpha + 0.001) != card2.strokeWidth))) {
+//                    print("made it past the alpha")
+//
+//                    if ((card0.setMyTitle == card1.setMyTitle && card0.setMyTitle == card2.setMyTitle)||(card0.setMyTitle != card1.setMyTitle && card0.setMyTitle != card2.setMyTitle && card1.setMyTitle != card2.setMyTitle)) {
+//                        print("now through setTitle")
+//
+//                        for card in chosenCards {
+//                            card.partOfSet = true
+//                            card.isFaceUp = false
+//                            card.selected = false
+//                        }
+//                        score = score + 3
+//                        chosenCards.removeAll()
+//                        print("This is a match")
+//
+//                    } else {
+//                        for card in chosenCards {
+//                            card.selected = false
+//                        }
+//
+//                        score = score - 5
+//                        chosenCards.removeAll()
+//                    }
+//                } else {
+//
+//                }
+//            } else {
+//                for card in chosenCards {
+//                    card.selected = false
+//                }
+//
+//                score = score - 5
+//                chosenCards.removeAll()
+//            }
+//        }
     }
     var score = 0
     
@@ -84,30 +84,50 @@ class Set {
     init(numberOfSetsOfCards: Int) {
         var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4))
         
-        for _ in 1...(numberOfSetsOfCards)*3 {
-            let card = Card()
-            cards.append(card)
-        }
-        print("the number of cards in cards is: \(cards.count)")
-        print("the number of sets of cards is: \(numberOfSetsOfCards)")
-        
-        
-        for card in cards {
-            let shapesRandomInt = Int(arc4random_uniform(UInt32(shapes.count)))
-            let opacitiesRandomInt = Int(arc4random_uniform(UInt32(opacities.count)))
-            let colorsRandomInt = Int(arc4random_uniform(UInt32(colors.count)))
-            
-            card.cardColor = colors[colorsRandomInt]
-            card.setMyTitle = shapes[shapesRandomInt]
-            card.alpha = opacities[opacitiesRandomInt]
-            
-            if card.alpha == 1 {
-                card.strokeWidth = 1
-                card.alpha = CGFloat(1.0)
-            } else if card.alpha < 1 {
-                card.strokeWidth = -1
+        for num in Card.Number.all {
+            for geometry in Card.Shape.all {
+                for shade in Card.CardAlpha.all {
+                    for look in Card.Color.all {
+                        cards.append(Card(geometry: geometry, look: look, shade: shade, num: num))
+                    }
+                }
             }
         }
+        print("blahhhhhhh")
+        for card in cards {
+            print(card.description)
+        }
+        
+        
+        
+        
+//        for _ in 1...(numberOfSetsOfCards)*3 {
+//            let card = Card()
+//            cards.append(card)
+//        }
+//        print("the number of cards in cards is: \(cards.count)")
+//        print("the number of sets of cards is: \(numberOfSetsOfCards)")
+        
+        
+        
+        
+        
+//        for card in cards {
+//            let shapesRandomInt = Int(arc4random_uniform(UInt32(shapes.count)))
+//            let opacitiesRandomInt = Int(arc4random_uniform(UInt32(opacities.count)))
+//            let colorsRandomInt = Int(arc4random_uniform(UInt32(colors.count)))
+//
+//            card.cardColor = colors[colorsRandomInt]
+//            card.setMyTitle = shapes[shapesRandomInt]
+//            card.alpha = opacities[opacitiesRandomInt]
+//
+//            if card.alpha == 1 {
+//                card.strokeWidth = 1
+//                card.alpha = CGFloat(1.0)
+//            } else if card.alpha < 1 {
+//                card.strokeWidth = -1
+//            }
+//        }
         
         for index in 0...11 {
             cards[index].isFaceUp = true
