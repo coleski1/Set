@@ -30,12 +30,15 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="number">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="shape" value="oval"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="shape" value="diamond"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="color" value="green"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cardAlpha">
-                                        <real key="value" value="0.050000000000000003"/>
+                                        <real key="value" value="1.1000000000000001"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="valueChanged" id="v1Z-or-a6T"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

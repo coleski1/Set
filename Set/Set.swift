@@ -76,13 +76,10 @@ class Set {
     var score = 0
     
     private(set) var cards = [Card]()
-//    var shapes = ["○","□","△"]
-//    var opacities = [CGFloat(0.15),CGFloat(0.999),1]
-//    var colors = [UIColor.red, UIColor.blue, UIColor.magenta]
+
 
 
     init(/*numberOfSetsOfCards: Int*/) {
-        print("the init is running")
         var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4))
         
         for num in Card.Number.all {
@@ -94,47 +91,20 @@ class Set {
                 }
             }
         }
-        print("blahhhhhhh")
-        for card in cards {
-            print(card.description)
-        }
+
+        
+        print(cards.count)
         
         
         
-        
-//        for _ in 1...(numberOfSetsOfCards)*3 {
-//            let card = Card()
-//            cards.append(card)
-//        }
-//        print("the number of cards in cards is: \(cards.count)")
-//        print("the number of sets of cards is: \(numberOfSetsOfCards)")
-        
-        
-        
-        
-        
-//        for card in cards {
-//            let shapesRandomInt = Int(arc4random_uniform(UInt32(shapes.count)))
-//            let opacitiesRandomInt = Int(arc4random_uniform(UInt32(opacities.count)))
-//            let colorsRandomInt = Int(arc4random_uniform(UInt32(colors.count)))
-//
-//            card.cardColor = colors[colorsRandomInt]
-//            card.setMyTitle = shapes[shapesRandomInt]
-//            card.alpha = opacities[opacitiesRandomInt]
-//
-//            if card.alpha == 1 {
-//                card.strokeWidth = 1
-//                card.alpha = CGFloat(1.0)
-//            } else if card.alpha < 1 {
-//                card.strokeWidth = -1
-//            }
-//        }
+
         
         for index in 0...11 {
             cards[index].isFaceUp = true
         }
         shuffleCards()
     }
+    
     
     public func dealThreeMore() {
         var hasBeenFlippedOver = 0
