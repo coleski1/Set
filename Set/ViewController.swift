@@ -10,10 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var game = Set(/*numberOfSetsOfCards: 81 self.numberOfSetsOfCards*/)
+    //init
+    private var game = Set()
+    var index = 0
+    //so that certain things load in properly at the beginning
+    private var startedGame = false
     
-    
-    
+    //swipe gesture
     @IBOutlet weak var cardView: CardView! {
         didSet {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
@@ -24,6 +27,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //choose the next card from the deck
     @objc func nextCard() {
         if index < 81 {
             print(game.cards[index].description)
@@ -35,13 +39,11 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    private var startedGame = false
+//    var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4), frame: cardView)
 
-    private var numberOfSetsOfCards: Int {
-        return (cardButtons.count+1)/3
-    }
+
+
+    //for the newGame button that is on hiatus
     @IBAction func newGame(_ sender: UIButton) {
         startedGame = true
 
@@ -55,6 +57,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
 
+    //for the deal three more button that is also on hiatus
     @IBAction func dealThreeMore(_ sender: UIButton) {
 
         if startedGame {
@@ -63,14 +66,11 @@ class ViewController: UIViewController {
         }
     }
     
-    
-
-    var index = 0
-    
     @IBOutlet weak var scoreCounter: UILabel!
 
     @IBOutlet var cardButtons: [UIButton]!
 
+    //for when the card is tapped but out of date since I changed the storyboard
     @IBAction func touchCard(_ sender: UIButton) {
 //        print("card was touched")
 //        updateViewFromModel()
@@ -80,6 +80,7 @@ class ViewController: UIViewController {
 //        }
     }
 
+    //also out of date since I changed the storyboard but used to update the game
     public func updateViewFromModel() {
         
         cardView.color = game.cards[index].color.rawValue

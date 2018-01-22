@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 class Set {
     
+    //array of cards that were chosen so I can match sets
     var chosenCards:[Card] = []
     
+    //from the old version of the game, still working out how to match cards
     func chooseCard(at index: Int){
 //        if cards[index].selected == true {
 //           cards[index].selected = false
@@ -75,13 +77,11 @@ class Set {
     }
     var score = 0
     
+    //array of all the cards
     private(set) var cards = [Card]()
 
-
-
-    init(/*numberOfSetsOfCards: Int*/) {
-        var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4))
-        
+    //gets one of each type to make 81
+    init() {
         for num in Card.Number.all {
             for geometry in Card.Shape.all {
                 for shade in Card.CardAlpha.all {
@@ -91,13 +91,6 @@ class Set {
                 }
             }
         }
-
-        
-        print(cards.count)
-        
-        
-        
-
         
         for index in 0...11 {
             cards[index].isFaceUp = true
@@ -105,13 +98,11 @@ class Set {
         shuffleCards()
     }
     
-    
+    //deals three more cards from the array of them
     public func dealThreeMore() {
         var hasBeenFlippedOver = 0
         for index in 0...cards.count-1 {
             if cards[index].isFaceUp==false&&hasBeenFlippedOver<3&&cards[index].partOfSet==false{
-                cards[index].cardColor = UIColor.green
-//                cards[index].alpha = cards[index].whileCardIsFaceDown
                 cards[index].isFaceUp = true
                 hasBeenFlippedOver+=1
             }
@@ -134,7 +125,7 @@ class Set {
 
 
 
-
+//creates a random integer, from lecture code
 extension Int {
     var arc4random: Int {
         if self > 0 {

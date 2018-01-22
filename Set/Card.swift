@@ -13,6 +13,8 @@ class Card: CustomStringConvertible {
     
     var description: String {return "\(self.color) - \(self.number) - \(self.shape) - \(self.cardAlpha)"}
     
+    //enums for the different methods to draw
+    
     enum Shape: String {
 
         case diamond = "diamond"
@@ -62,7 +64,7 @@ class Card: CustomStringConvertible {
     var number: Number
 
     static var identifierFactory = 0
-    
+
     static func getUniqueIdentifier() -> Int {
         identifierFactory += 1
         return identifierFactory
@@ -79,20 +81,3 @@ class Card: CustomStringConvertible {
     }
 }
 
-extension UIColor {
-    convenience init(_ colorString: ColorString) {
-        switch colorString {
-        case .red:
-            self.init(red:1.0, green:0.0, blue:0.0, alpha:1.0)
-        case .green:
-            self.init(red:0.0, green:1.0, blue:0.0, alpha:1.0)
-        case .blue:
-            self.init(red:0.0, green:0.0, blue:1.0, alpha:1.0)
-        }
-    }
-    enum ColorString: String  {
-        case red
-        case green
-        case blue
-    }
-}

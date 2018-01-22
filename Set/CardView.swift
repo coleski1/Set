@@ -30,6 +30,10 @@ class CardView: UIButton {
 //
 //    var rankString = "10"
     
+    
+    //This section was from the lecture code that I was not sure if was neccessary early on
+//----------------------------------------------------------------------
+    
 //    @objc func adjustFaceCardScale(byHandlingGestureRecognizedBy recognizer: UIPinchGestureRecognizer) {
 //        switch recognizer.state {
 //        case .changed, .ended: faceCardScale *= recognizer.scale
@@ -37,89 +41,58 @@ class CardView: UIButton {
 //        }
 //    }
     
-
-    
-//    override func draw(_ rect: CGRect) {
-//
-//        let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius:cornerRadius)
-//        roundedRect.addClip()
-//        UIColor.white.setFill()
-//        roundedRect.fill()
-    
-//        let path = UIBezierPath()
-//        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-//        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-//        path.lineWidth = 5.0
-//        path.close()
-//        UIColor.blue.setFill()
-//        UIColor.red.setStroke()
-//        path.stroke()
-//        path.fill()
-//        if isFaceUp {
-//            if let faceCardImage = UIImage(named: rankString + suit, in: Bundle(for: self.classForCoder), compatibleWith: traitCollection ) {
-//                faceCardImage.draw(in: bounds.zoom(by: faceCardScale))
-//            } else  {
-//                drawPips()
-//            }
-//        }else {
-//            if let cardBackImage = UIImage(named: "cardback") {
-//                cardBackImage.draw(in: bounds)
-//            }
-//        }
-        
+//    private func centeredAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString {
+//        var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
+//        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.alignment = .center
+//        return NSAttributedString(string: string, attributes: [.paragraphStyle:paragraphStyle,.font:font])
 //    }
     
-    private func centeredAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString {
-        var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
-        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        return NSAttributedString(string: string, attributes: [.paragraphStyle:paragraphStyle,.font:font])
-    }
+//    private var cornerString: NSAttributedString {
+//        return centeredAttributedString("\n", fontSize: cornerFontSize)
+//    }
     
-    private var cornerString: NSAttributedString {
-        return centeredAttributedString("\n", fontSize: cornerFontSize)
-    }
+//    private lazy var upperLeftCornerLabel = createCornerLabel()
+//    private lazy var lowerRightCornerLabel = createCornerLabel()
+//
+//    private func createCornerLabel() -> UILabel {
+//        let label = UILabel()
+//        label.numberOfLines = 0
+//        addSubview(label)
+//        return label
+//    }
     
-    private lazy var upperLeftCornerLabel = createCornerLabel()
-    private lazy var lowerRightCornerLabel = createCornerLabel()
+//    private func configureCornerLabel( _ label: UILabel) {
+//        label.attributedText = cornerString
+//        label.frame.size = CGSize.zero
+//        label.sizeToFit()
+////        label.isHidden = !isFaceUp
+//    }
+//
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        setNeedsDisplay()
+//        setNeedsLayout()
+//    }
     
-    private func createCornerLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        addSubview(label)
-        return label
-    }
-    
-    private func configureCornerLabel( _ label: UILabel) {
-        label.attributedText = cornerString
-        label.frame.size = CGSize.zero
-        label.sizeToFit()
-//        label.isHidden = !isFaceUp
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        setNeedsDisplay()
-        setNeedsLayout()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        configureCornerLabel(upperLeftCornerLabel)
-        upperLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
-        
-        
-        configureCornerLabel(lowerRightCornerLabel)
-        lowerRightCornerLabel.transform = CGAffineTransform.identity
-            .translatedBy(x: lowerRightCornerLabel.frame.size.width, y: lowerRightCornerLabel.frame.size.height)
-            .rotated(by: CGFloat.pi)
-        lowerRightCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y:bounds.maxY)
-            .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
-            .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
-    }
-    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        configureCornerLabel(upperLeftCornerLabel)
+//        upperLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
+//
+//
+//        configureCornerLabel(lowerRightCornerLabel)
+//        lowerRightCornerLabel.transform = CGAffineTransform.identity
+//            .translatedBy(x: lowerRightCornerLabel.frame.size.width, y: lowerRightCornerLabel.frame.size.height)
+//            .rotated(by: CGFloat.pi)
+//        lowerRightCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y:bounds.maxY)
+//            .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
+//            .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
+//    }
+    //-------------------------------------------------------------------------------------
 
+    //this draws the card with the correct drawing on it
     override func draw(_ rect: CGRect) {
         
         var cardColor: UIColor = UIColor.purple
@@ -141,7 +114,7 @@ class CardView: UIButton {
         roundedRect.fill()
         
         
-        
+        //oval
         if (shape == "oval") {
             if number == 1 {
                 let path = UIBezierPath()
@@ -215,6 +188,7 @@ class CardView: UIButton {
             } else {
                 print("there should be ovals but that is not happenning with an issue in numbers")
             }
+            //diamond
         } else if shape == "diamond" {
             if number == 1 {
                 
@@ -303,6 +277,8 @@ class CardView: UIButton {
             } else {
                 print("there should be diamonds but something is broken with numbers")
             }
+            
+            //squiggle
         } else if shape == "squiggle" {
             if number == 1 {
                 
@@ -376,6 +352,7 @@ class CardView: UIButton {
     }
 }
 
+//sets up my bounds
 extension CardView {
     //how to make constants
     private struct SizeRatio {
@@ -398,6 +375,7 @@ extension CardView {
         return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
     }
 }
+
 
 extension CGRect {
     var leftHalf: CGRect {
