@@ -26,6 +26,15 @@
                                     <constraint firstAttribute="width" secondItem="nB7-R6-meM" secondAttribute="height" multiplier="5:8" id="JLk-ZO-rgk"/>
                                     <constraint firstAttribute="width" priority="750" constant="800" id="thQ-ue-Jl6"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="number">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="shape" value="squiggle"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
