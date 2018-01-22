@@ -18,7 +18,10 @@ class CardView: UIButton {
     var number: Int = 2 { didSet { setNeedsDisplay(); setNeedsLayout() }}
 
     @IBInspectable
-    var color: UIColor = UIColor.green
+    var color: String = "green"
+    
+    @IBInspectable
+    var cardAlpha: CGFloat = 1.0
     
 //    @IBInspectable
 //    var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout() }}
@@ -46,7 +49,7 @@ class CardView: UIButton {
 //        let path = UIBezierPath()
 //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
 //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-//        path.lineWidth = 3.0
+//        path.lineWidth = 5.0
 //        path.close()
 //        UIColor.blue.setFill()
 //        UIColor.red.setStroke()
@@ -118,20 +121,36 @@ class CardView: UIButton {
     
 
     override func draw(_ rect: CGRect) {
+        
+        var cardColor: UIColor = UIColor.purple
+        var lineColor: UIColor = UIColor.black
+        if color == "blue" {
+            cardColor = UIColor(red:0.0, green:0.0, blue:1.0, alpha:cardAlpha)
+            lineColor = UIColor(red:0.0, green:0.0, blue:1.0, alpha:1.0)
+        } else if color == "red" {
+            cardColor = UIColor(red:1.0, green:0.0, blue:0.0, alpha:cardAlpha)
+            lineColor = UIColor(red:1.0, green:0.0, blue:0.0, alpha:1.0)
+        } else if color == "green" {
+            cardColor = UIColor(red:0.0, green:1.0, blue:0.0, alpha:cardAlpha)
+            lineColor = UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0)
+        }
+        
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius:cornerRadius)
         roundedRect.addClip()
         UIColor.white.setFill()
         roundedRect.fill()
+        
+        
         
         if (shape == "oval") {
             if number == 1 {
                 let path = UIBezierPath()
                 path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
                 path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                path.lineWidth = 3.0
+                path.lineWidth = 5.0
                 path.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
                 
@@ -141,20 +160,20 @@ class CardView: UIButton {
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
                 
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                thirdPath.lineWidth = 3.0
+                thirdPath.lineWidth = 5.0
                 thirdPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
                 
                 let secondPath = UIBezierPath()
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                secondPath.lineWidth = 3.0
+                secondPath.lineWidth = 5.0
                 secondPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 secondPath.stroke()
                 secondPath.fill()
                 
@@ -163,10 +182,10 @@ class CardView: UIButton {
                 let path = UIBezierPath()
                 path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
                 path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                path.lineWidth = 3.0
+                path.lineWidth = 5.0
                 path.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
                 path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
@@ -175,10 +194,10 @@ class CardView: UIButton {
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
     
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                secondPath.lineWidth = 3.0
+                secondPath.lineWidth = 5.0
                 secondPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 secondPath.stroke()
                 secondPath.fill()
     
@@ -186,10 +205,10 @@ class CardView: UIButton {
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
     
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                thirdPath.lineWidth = 3.0
+                thirdPath.lineWidth = 5.0
                 thirdPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
                 
@@ -207,8 +226,8 @@ class CardView: UIButton {
                 path.close()
     
                 path.lineWidth = 5.0
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
                 
@@ -221,9 +240,9 @@ class CardView: UIButton {
                 path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
                 path.close()
     
-                path.lineWidth = 3.0
-                color.setFill()
-                color.setStroke()
+                path.lineWidth = 5.0
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
     
@@ -234,9 +253,9 @@ class CardView: UIButton {
                 thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
                 thirdPath.close()
     
-                thirdPath.lineWidth = 3.0
-                color.setFill()
-                color.setStroke()
+                thirdPath.lineWidth = 5.0
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
                 
@@ -249,9 +268,9 @@ class CardView: UIButton {
                 path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
                 path.close()
     
-                path.lineWidth = 3.0
-                color.setFill()
-                color.setStroke()
+                path.lineWidth = 5.0
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
     
@@ -262,9 +281,9 @@ class CardView: UIButton {
                 secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
                 secondPath.close()
     
-                secondPath.lineWidth = 3.0
-                color.setFill()
-                color.setStroke()
+                secondPath.lineWidth = 5.0
+                cardColor.setFill()
+                lineColor.setStroke()
                 secondPath.stroke()
                 secondPath.fill()
     
@@ -275,9 +294,9 @@ class CardView: UIButton {
                 thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
                 thirdPath.close()
     
-                thirdPath.lineWidth = 3.0
-                color.setFill()
-                color.setStroke()
+                thirdPath.lineWidth = 5.0
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
                 
@@ -290,10 +309,10 @@ class CardView: UIButton {
                 let path = UIBezierPath()
                 path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                path.lineWidth = 3.0
+                path.lineWidth = 5.0
                 path.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
                 
@@ -302,20 +321,20 @@ class CardView: UIButton {
                 let secondPath = UIBezierPath()
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  - radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                secondPath.lineWidth = 3.0
+                secondPath.lineWidth = 5.0
                 secondPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 secondPath.stroke()
                 secondPath.fill()
     
                 let thirdPath = UIBezierPath()
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                thirdPath.lineWidth = 3.0
+                thirdPath.lineWidth = 5.0
                 thirdPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
                 
@@ -324,30 +343,30 @@ class CardView: UIButton {
                 let path = UIBezierPath()
                 path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                path.lineWidth = 3.0
+                path.lineWidth = 5.0
                 path.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 path.stroke()
                 path.fill()
     
                 let secondPath = UIBezierPath()
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  - radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                secondPath.lineWidth = 3.0
+                secondPath.lineWidth = 5.0
                 secondPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 secondPath.stroke()
                 secondPath.fill()
     
                 let thirdPath = UIBezierPath()
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
                 thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-                thirdPath.lineWidth = 3.0
+                thirdPath.lineWidth = 5.0
                 thirdPath.close()
-                color.setFill()
-                color.setStroke()
+                cardColor.setFill()
+                lineColor.setStroke()
                 thirdPath.stroke()
                 thirdPath.fill()
             } else {
