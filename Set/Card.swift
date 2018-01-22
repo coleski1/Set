@@ -13,9 +13,6 @@ class Card: CustomStringConvertible {
     
     var description: String {return "\(self.color) - \(self.number) - \(self.shape) - \(self.cardAlpha)"}
     
-    
-    
-    
 //    var hashValue: Int { return identifier}
 //
 //    static func == (lhs: Card, rhs: Card) -> Bool {
@@ -94,13 +91,14 @@ class Card: CustomStringConvertible {
 //            return nil
 //        }
 //    }
-    var strokeWidth = 1
-    var whileCardIsFaceDown =  CGFloat(0.75)
-    lazy var alpha: CGFloat = cardAlpha.rawValue
-    var setMyTitle = ""
+//    var strokeWidth = 1
+//    var whileCardIsFaceDown =  CGFloat(0.75)
+//    var setMyTitle = ""
 
     var partOfSet = false
-
+    
+    
+    lazy var alpha: CGFloat = cardAlpha.rawValue
     var isFaceUp = false
     var selected = false
     private var identifier: Int
@@ -109,10 +107,10 @@ class Card: CustomStringConvertible {
     var cardAlpha: CardAlpha
     var number: Number
 
-    lazy var attributedString = NSMutableAttributedString(
-        string: setMyTitle,
-        attributes: [NSAttributedStringKey.strokeWidth:strokeWidth,
-                     NSAttributedStringKey.foregroundColor: cardColor.withAlphaComponent(alpha)])
+//    lazy var attributedString = NSMutableAttributedString(
+//        string: setMyTitle,
+//        attributes: [NSAttributedStringKey.strokeWidth:strokeWidth,
+//                     NSAttributedStringKey.foregroundColor: cardColor.withAlphaComponent(cardAlpha.rawValue)])
 
     static var identifierFactory = 0
     
@@ -122,7 +120,6 @@ class Card: CustomStringConvertible {
     }
     
     init(geometry: Shape, look: Color, shade: CardAlpha, num: Number) {
-        
         self.identifier  = Card.getUniqueIdentifier()
         self.shape = geometry
         self.color = look

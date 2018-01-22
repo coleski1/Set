@@ -133,7 +133,18 @@ class CardView: UIButton {
             UIColor.white.setFill()
             roundedRect.fill()
             
-
+//            let path = UIBezierPath()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+//            path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            path.lineWidth = 3.0
+//            path.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            path.stroke()
+//            path.fill()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+    
+            print("Two ovals are being drawn")
     
             let thirdPath = UIBezierPath()
             thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
@@ -159,211 +170,207 @@ class CardView: UIButton {
     
         }
     
-    //creates three ovals
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        path.lineWidth = 3.0
-    //        path.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        path.stroke()
-    //        path.fill()
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-    //
-    //        let secondPath = UIBezierPath()
-    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-    //
-    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        secondPath.lineWidth = 3.0
-    //        secondPath.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        secondPath.stroke()
-    //        secondPath.fill()
-    //
-    //        let thirdPath = UIBezierPath()
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-    //
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        thirdPath.lineWidth = 3.0
-    //        thirdPath.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        thirdPath.stroke()
-    //        thirdPath.fill()
-    //
-    //    }
-    //draws a diamond
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
-    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
-    //        path.close()
-    //
-    //        path.lineWidth = 5.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        path.stroke()
-    //        path.fill()
-    //
-    //    }
-    //
-    
-    //two diamonds
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
-    //        path.close()
-    //
-    //        path.lineWidth = 3.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        path.stroke()
-    //        path.fill()
-    //
-
-    //
-    //        let thirdPath = UIBezierPath()
-    //        thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
-    //        thirdPath.close()
-    //
-    //        thirdPath.lineWidth = 3.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        thirdPath.stroke()
-    //        thirdPath.fill()
-    //
-    //    }
-    
-    //three diamonds
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY + radius*3))
-    //        path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
-    //        path.close()
-    //
-    //        path.lineWidth = 3.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        path.stroke()
-    //        path.fill()
-    //
-    //        let secondPath = UIBezierPath()
-    //        secondPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
-    //        secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
-    //        secondPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
-    //        secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
-    //        secondPath.close()
-    //
-    //        secondPath.lineWidth = 3.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        secondPath.stroke()
-    //        secondPath.fill()
-    //
-    //        let thirdPath = UIBezierPath()
-    //        thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY - radius*3))
-    //        thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
-    //        thirdPath.close()
-    //
-    //        thirdPath.lineWidth = 3.0
-    //        UIColor.red.setStroke()
-    //        UIColor.blue.setFill()
-    //        thirdPath.stroke()
-    //        thirdPath.fill()
-    //
-    //    }
-    
-    // this draws a squiggly
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        path.lineWidth = 3.0
-    //        path.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        path.stroke()
-    //        path.fill()
-    //    }
-    
-    //draws two squigglies
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        path.lineWidth = 3.0
-    //        path.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        path.stroke()
-    //        path.fill()
-    //
-
-    //
-    //        let thirdPath = UIBezierPath()
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        thirdPath.lineWidth = 3.0
-    //        thirdPath.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        thirdPath.stroke()
-    //        thirdPath.fill()
-    //    }
-    
-    //draws three squigglies
-    //    override func draw(_ rect: CGRect) {
-    //        let path = UIBezierPath()
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        path.lineWidth = 3.0
-    //        path.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        path.stroke()
-    //        path.fill()
-    //
-    //        let secondPath = UIBezierPath()
-    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  - radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        secondPath.lineWidth = 3.0
-    //        secondPath.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        secondPath.stroke()
-    //        secondPath.fill()
-    //
-    //        let thirdPath = UIBezierPath()
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
-    //        thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
-    //        thirdPath.lineWidth = 3.0
-    //        thirdPath.close()
-    //        UIColor.blue.setFill()
-    //        UIColor.red.setStroke()
-    //        thirdPath.stroke()
-    //        thirdPath.fill()
-    //    }
-    
-
+//    creates three ovals
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+//            path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            path.lineWidth = 3.0
+//            path.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            path.stroke()
+//            path.fill()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+//    
+//            let secondPath = UIBezierPath()
+//            secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+//    
+//            secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            secondPath.lineWidth = 3.0
+//            secondPath.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            secondPath.stroke()
+//            secondPath.fill()
+//    
+//            let thirdPath = UIBezierPath()
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+//    
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY - radius*3), radius: radius, startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            thirdPath.lineWidth = 3.0
+//            thirdPath.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            thirdPath.stroke()
+//            thirdPath.fill()
+//    
+//        }
+//    draws a diamond
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
+//            path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
+//            path.close()
+//    
+//            path.lineWidth = 5.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            path.stroke()
+//            path.fill()
+//    
+//        }
+//    
+//    
+//    two diamonds
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
+//            path.close()
+//    
+//            path.lineWidth = 3.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            path.stroke()
+//            path.fill()
+//    
+//
+//    
+//            let thirdPath = UIBezierPath()
+//            thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
+//            thirdPath.close()
+//    
+//            thirdPath.lineWidth = 3.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            thirdPath.stroke()
+//            thirdPath.fill()
+//    
+//        }
+//    
+//    three diamonds
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY + radius*3))
+//            path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius + radius*3))
+//            path.close()
+//    
+//            path.lineWidth = 3.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            path.stroke()
+//            path.fill()
+//    
+//            let secondPath = UIBezierPath()
+//            secondPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY))
+//            secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius))
+//            secondPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY))
+//            secondPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius))
+//            secondPath.close()
+//    
+//            secondPath.lineWidth = 3.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            secondPath.stroke()
+//            secondPath.fill()
+//    
+//            let thirdPath = UIBezierPath()
+//            thirdPath.move(to: CGPoint(x: bounds.midX - bounds.midX/2 - radius, y: bounds.midY - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - radius - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX + bounds.midX/2 + radius, y:bounds.midY - radius*3))
+//            thirdPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY + radius - radius*3))
+//            thirdPath.close()
+//    
+//            thirdPath.lineWidth = 3.0
+//            UIColor.red.setStroke()
+//            UIColor.blue.setFill()
+//            thirdPath.stroke()
+//            thirdPath.fill()
+//    
+//        }
+//    
+//     this draws a squiggly
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            path.lineWidth = 3.0
+//            path.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            path.stroke()
+//            path.fill()
+//        }
+//    
+//    draws two squigglies
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            path.lineWidth = 3.0
+//            path.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            path.stroke()
+//            path.fill()
+//    
+//
+//    
+//            let thirdPath = UIBezierPath()
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            thirdPath.lineWidth = 3.0
+//            thirdPath.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            thirdPath.stroke()
+//            thirdPath.fill()
+//        }
+//    
+//    draws three squigglies
+//        override func draw(_ rect: CGRect) {
+//            let path = UIBezierPath()
+//            path.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            path.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            path.lineWidth = 3.0
+//            path.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            path.stroke()
+//            path.fill()
+//    
+//            let secondPath = UIBezierPath()
+//            secondPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY - radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            secondPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  - radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            secondPath.lineWidth = 3.0
+//            secondPath.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            secondPath.stroke()
+//            secondPath.fill()
+//    
+//            let thirdPath = UIBezierPath()
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX - bounds.midX/2, y: bounds.midY + radius*3 - radius/2), radius: radius, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: false)
+//            thirdPath.addArc(withCenter: CGPoint(x: bounds.midX + bounds.midX/2, y: bounds.midY + radius  + radius*3 - radius/2), radius: radius, startAngle: CGFloat.pi, endAngle: 3*CGFloat.pi/2, clockwise: false)
+//            thirdPath.lineWidth = 3.0
+//            thirdPath.close()
+//            UIColor.blue.setFill()
+//            UIColor.red.setStroke()
+//            thirdPath.stroke()
+//            thirdPath.fill()
+//        }
 
 }
-
-
 
 extension CardView {
     //how to make constants

@@ -76,12 +76,13 @@ class Set {
     var score = 0
     
     private(set) var cards = [Card]()
-    var shapes = ["○","□","△"]
-    var opacities = [CGFloat(0.15),CGFloat(0.999),1]
-    var colors = [UIColor.red, UIColor.blue, UIColor.magenta]
+//    var shapes = ["○","□","△"]
+//    var opacities = [CGFloat(0.15),CGFloat(0.999),1]
+//    var colors = [UIColor.red, UIColor.blue, UIColor.magenta]
 
 
-    init(numberOfSetsOfCards: Int) {
+    init(/*numberOfSetsOfCards: Int*/) {
+        print("the init is running")
         var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 4))
         
         for num in Card.Number.all {
@@ -140,7 +141,7 @@ class Set {
         for index in 0...cards.count-1 {
             if cards[index].isFaceUp==false&&hasBeenFlippedOver<3&&cards[index].partOfSet==false{
                 cards[index].cardColor = UIColor.green
-                cards[index].alpha = cards[index].whileCardIsFaceDown
+//                cards[index].alpha = cards[index].whileCardIsFaceDown
                 cards[index].isFaceUp = true
                 hasBeenFlippedOver+=1
             }
@@ -152,14 +153,17 @@ class Set {
         var cardsShuffled = [Card]()
         for _ in cards {
             let randomNum = Int(arc4random_uniform(UInt32(cards.count)))
-            
+
             cardsShuffled.append(cards[randomNum])
             cards.remove(at: randomNum)
         }
-        
+
         cards = cardsShuffled
     }
 }
+
+
+
 
 extension Int {
     var arc4random: Int {
