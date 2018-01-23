@@ -8,19 +8,14 @@
 
 import UIKit
 
-@IBDesignable
-class CardView: UIButton {
+class CardView: UIView {
     
-    @IBInspectable
     var shape: String = "oval" { didSet { setNeedsDisplay(); setNeedsLayout() }}
 //
-    @IBInspectable
     var number: Int = 2 { didSet { setNeedsDisplay(); setNeedsLayout() }}
 
-    @IBInspectable
     var color: String = "green"
     
-    @IBInspectable
     var cardAlpha: CGFloat = 1.0
     
 //    @IBInspectable
@@ -92,6 +87,24 @@ class CardView: UIButton {
 //    }
     //-------------------------------------------------------------------------------------
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.clipsToBounds = true
+        setBasicLayoutForBorder()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.clipsToBounds = true
+        setBasicLayoutForBorder()
+    }
+    
+    private func setBasicLayoutForBorder () {
+        layer.borderWidth = LayOutMetricsForCardView.borderWidth
+        layer.borderColor = LayOutMetricsForCardView.borderColor
+        layer.cornerRadius = LayOutMetricsForCardView.cornerRadius
+    }
+    
     //this draws the card with the correct drawing on it
     override func draw(_ rect: CGRect) {
         
@@ -403,3 +416,4 @@ extension CGPoint {
         return CGPoint(x: x+dx, y: y+dy)
     }
 }
+

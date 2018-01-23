@@ -78,7 +78,8 @@ class Set {
     var score = 0
     
     //array of all the cards
-    private(set) var cards = [Card]()
+    public var cards = [Card]()
+    public var cardsOnTable = [CardView]()
 
     //gets one of each type to make 81
     init() {
@@ -92,21 +93,7 @@ class Set {
             }
         }
         
-        for index in 0...11 {
-            cards[index].isFaceUp = true
-        }
         shuffleCards()
-    }
-    
-    //deals three more cards from the array of them
-    public func dealThreeMore() {
-        var hasBeenFlippedOver = 0
-        for index in 0...cards.count-1 {
-            if cards[index].isFaceUp==false&&hasBeenFlippedOver<3&&cards[index].partOfSet==false{
-                cards[index].isFaceUp = true
-                hasBeenFlippedOver+=1
-            }
-        }
     }
     
     //shuffle the cards

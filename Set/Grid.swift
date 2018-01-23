@@ -94,7 +94,7 @@ struct Grid
     }
     
     private var cellFrames = [CGRect]()
-    private var cellCountForAspectRatioLayout = 0 { didSet { recalculate() } }
+    private var cellCountForAspectRatioLayout = 12 { didSet { recalculate() } }
     private var calculatedDimensions: (rowCount: Int, columnCount: Int) = (0, 0)
     
     private mutating func recalculate() {

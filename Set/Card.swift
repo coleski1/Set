@@ -11,6 +11,7 @@ import UIKit
 
 class Card: CustomStringConvertible {
     
+    
     var description: String {return "\(self.color) - \(self.number) - \(self.shape) - \(self.cardAlpha)"}
     
     //enums for the different methods to draw
@@ -24,7 +25,7 @@ class Card: CustomStringConvertible {
         static var all = [Shape.diamond, .oval, .squiggle]
         var description: String { return rawValue}
     }
-    
+
     enum Color: String {
         case green = "green"
         case red
@@ -32,21 +33,21 @@ class Card: CustomStringConvertible {
 
         static var all = [Color.green, .red, .blue]
     }
-    
+
     enum CardAlpha: CGFloat {
         case full = 1.0
         case semi = 0.20
         case minor = 0.0
-        
+
         static var all = [CardAlpha.full, .semi, .minor]
-        
+
     }
-    
+
     enum Number: Int {
         case one = 1
         case two
         case three
-        
+
         static var all = [Number.one, .two, .three]
     }
     
@@ -57,7 +58,7 @@ class Card: CustomStringConvertible {
     lazy var alpha: CGFloat = cardAlpha.rawValue
     var isFaceUp = false
     var selected = false
-    private var identifier: Int
+    public var identifier: Int
     var shape: Shape
     var color: Color
     var cardAlpha: CardAlpha
@@ -80,4 +81,3 @@ class Card: CustomStringConvertible {
         print(description)
     }
 }
-

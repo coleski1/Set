@@ -14,6 +14,7 @@
 		FE67C4E2200B0B3200832688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE67C4E0200B0B3200832688 /* LaunchScreen.storyboard */; };
 		FE67C4EB200BC2A200832688 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67C4EA200BC2A200832688 /* Card.swift */; };
 		FE67C4ED200BC5AA00832688 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67C4EC200BC5AA00832688 /* Set.swift */; };
+		FEBBD6F82016B76E007FFADC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBD6F72016B76E007FFADC /* MainView.swift */; };
 		FEE44EEB2011554E00639D08 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE44EEA2011554D00639D08 /* Grid.swift */; };
 		FEE44EED201160A600639D08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE44EEC201160A600639D08 /* CardView.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		FE67C4E3200B0B3200832688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE67C4EA200BC2A200832688 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FE67C4EC200BC5AA00832688 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		FEBBD6F72016B76E007FFADC /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FEE44EEA2011554D00639D08 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FEE44EEC201160A600639D08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 				FE67C4E9200B0B5B00832688 /* App Support */,
 				FE67C4D9200B0B3200832688 /* ViewController.swift */,
 				FEE44EEC201160A600639D08 /* CardView.swift */,
+				FEBBD6F72016B76E007FFADC /* MainView.swift */,
 				FE67C4EA200BC2A200832688 /* Card.swift */,
 				FE67C4EC200BC5AA00832688 /* Set.swift */,
 				FEE44EEA2011554D00639D08 /* Grid.swift */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE67C4ED200BC5AA00832688 /* Set.swift in Sources */,
+				FEBBD6F82016B76E007FFADC /* MainView.swift in Sources */,
 				FE67C4DA200B0B3200832688 /* ViewController.swift in Sources */,
 				FE67C4EB200BC2A200832688 /* Card.swift in Sources */,
 				FEE44EEB2011554E00639D08 /* Grid.swift in Sources */,
