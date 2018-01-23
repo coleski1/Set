@@ -6,7 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,27 +22,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nB7-R6-meM" customClass="MainView" customModule="Set" customModuleProvider="target">
-                                <rect key="frame" x="16" y="69" width="343" height="549"/>
+                                <rect key="frame" x="16" y="36" width="343" height="566"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="nB7-R6-meM" secondAttribute="height" multiplier="5:8" id="JLk-ZO-rgk"/>
-                                    <constraint firstAttribute="width" priority="750" constant="800" id="thQ-ue-Jl6"/>
-                                </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="58" translatesAutoresizingMaskIntoConstraints="NO" id="xMM-Up-eLp">
+                                <rect key="frame" x="17" y="609.5" width="341" height="41.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9k4-eb-jHW">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="41.5"/>
+                                        <state key="normal" title="New Game">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HuG-4s-3qm"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-y0-SFz">
+                                        <rect key="frame" x="133" y="0.0" width="75" height="41.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fs4-w9-TTb">
+                                        <rect key="frame" x="266" y="0.0" width="75" height="41.5"/>
+                                        <state key="normal" title="Deal 3">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dealThreeMore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TLT-o3-eAP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nB7-R6-meM" secondAttribute="trailing" constant="16" id="4yS-dB-EMR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nB7-R6-meM" secondAttribute="bottom" constant="16" id="7yT-5y-WGk"/>
-                            <constraint firstItem="nB7-R6-meM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FT9-nl-axX"/>
-                            <constraint firstItem="nB7-R6-meM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LY7-mx-k0Y"/>
-                            <constraint firstItem="nB7-R6-meM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="oXH-dF-AQ1"/>
-                            <constraint firstItem="nB7-R6-meM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uoA-6u-0GC"/>
+                            <constraint firstItem="nB7-R6-meM" firstAttribute="centerX" secondItem="xMM-Up-eLp" secondAttribute="centerX" id="16r-1E-wh5"/>
+                            <constraint firstItem="xMM-Up-eLp" firstAttribute="firstBaseline" secondItem="nB7-R6-meM" secondAttribute="baseline" constant="22" symbolType="layoutAnchor" id="1TH-Yh-tDi"/>
+                            <constraint firstItem="nB7-R6-meM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FiD-69-Akd"/>
+                            <constraint firstItem="nB7-R6-meM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Foa-zY-z3B"/>
+                            <constraint firstItem="nB7-R6-meM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="UBp-Ps-cRA"/>
+                            <constraint firstItem="xMM-Up-eLp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="amJ-81-sE5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nB7-R6-meM" secondAttribute="trailing" constant="16" id="i5q-aR-tdy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xMM-Up-eLp" secondAttribute="bottom" constant="16" id="mlr-3S-a0X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xMM-Up-eLp" secondAttribute="trailing" constant="17" id="rFz-2R-O1m"/>
+                            <constraint firstItem="nB7-R6-meM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="roJ-US-7jx"/>
+                            <constraint firstAttribute="bottom" secondItem="nB7-R6-meM" secondAttribute="bottom" constant="65" id="wyy-9V-jyD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mainView" destination="nB7-R6-meM" id="jDO-8z-POk"/>
+                        <outlet property="scoreCounter" destination="hrk-y0-SFz" id="cvW-jf-S2g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
