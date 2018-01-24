@@ -12,8 +12,13 @@ class Set {
     
     //array of cards that were chosen so I can match sets
     var chosenCards:[CardView] = []
+    var score = 0
+    //array of all the cards
+    public var cards = [Card]()
+    //array of cardviews that are being able to be seen on the screen at once
+    public var cardsOnTable = [CardView]()
     
-    //from the old version of the game, still working out how to match cards
+    //matches cards but definitely bloated and needs some work
     func chooseCard(at index: Int){
         if cardsOnTable[index].selected == true {
             cardsOnTable[index].selected = false
@@ -72,11 +77,6 @@ class Set {
             }
         }
     }
-    var score = 0
-    
-    //array of all the cards
-    public var cards = [Card]()
-    public var cardsOnTable = [CardView]()
     
     //gets one of each type to make 81
     init() {

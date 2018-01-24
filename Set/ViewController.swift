@@ -13,25 +13,19 @@ class ViewController: UIViewController {
     //init
     private var game = Set()
     var index = 0
-    //so that certain things load in properly at the beginning
-    private var startedGame = false
-    
+    lazy var grid = Grid(layout: Grid.Layout.aspectRatio(5/8), frame: mainView.bounds)
     private var selectedCards = [CardView]()
+    @IBOutlet weak var scoreCounter: UILabel!
     
-    //swipe gesture
+    //the big background view that the grid is written onto
     @IBOutlet weak var mainView: MainView! {
         didSet {
-//            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
-//            swipe.direction = [.left,.right]
-//            mainView.addGestureRecognizer(swipe)
-////            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(cardView.adjustFaceCardScale(byHandlingGestureRecognizedBy:)))
-////            cardView.addGestureRecognizer(pinch)
             dealCards()
             updateViewFromModel()
         }
     }
     
-    //for the newGame button that is on hiatus
+    //for the newGame button
     @IBAction func newGame(_ sender: UIButton) {
         game.cardsOnTable.forEach {
             $0.removeFromSuperview()
@@ -39,32 +33,17 @@ class ViewController: UIViewController {
         game.cardsOnTable.removeAll()
         let newFunGame = Set()
         game = newFunGame
-        game.score = 3
+        game.score = 0
         dealCards()
         updateViewFromModel()
     }
 
-    //for the deal three more button that is also on hiatus
+    //for the deal three more button
     @IBAction func dealThreeMore(_ sender: UIButton) {
        outsideDealThreeMore()
     }
     
-    @IBOutlet weak var scoreCounter: UILabel!
-
-    //for when the card is tapped but out of date since I changed the storyboard
-    @IBAction func touchCard(_ sender: UIButton) {
-        print("card was touched")
-//        updateViewFromModel()
-//        if let cardNumber = cardButtons.index(of: sender), game.cardsOnTable[cardNumber].isFaceUp {
-//            game.chooseCard(at: cardNumber)
-//            updateViewFromModel()
-//        }
-    }
-    
-    
-    lazy var grid = Grid(layout: Grid.Layout.aspectRatio(5/8), frame: mainView.bounds)
-
-    //also out of date since I changed the storyboard but used to update the game
+    //updates the view of the game
     public func updateViewFromModel() {
         for index in game.cardsOnTable.indices {
             let insetXY = (grid[index]?.height ?? 400)/100
@@ -73,12 +52,14 @@ class ViewController: UIViewController {
         if scoreCounter != nil {scoreCounter.text! = "Score: \(game.score)"}
     }
     
+    //deals all the cards needed at the beginning
     private func dealCards() {
         for _ in 0...3 {
             outsideDealThreeMore()
         }
     }
     
+    //deals 3 random cards
     private func outsideDealThreeMore() {
         if game.cards.count > 2 {
             let tableCount = game.cardsOnTable.count + 2
@@ -103,6 +84,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    //chooses the card that was clicked on
     @objc func chooseCard(_ recognizer: UITapGestureRecognizer) {
         guard let tappedCard = recognizer.view as? CardView else { return }
         

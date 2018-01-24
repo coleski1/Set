@@ -11,10 +11,21 @@ import UIKit
 
 class Card: CustomStringConvertible {
     
+    //initialization of variables, some are out of date and need to be removed
     var description: String {return "\(self.color) - \(self.number) - \(self.shape) - \(self.cardAlpha)"}
+    lazy var alpha: CGFloat = cardAlpha.rawValue
+    var isFaceUp = false
+    var selected = false
+    public var identifier: Int
+    var shape: Shape
+    var color: Color
+    var cardAlpha: CardAlpha
+    var number: Number
+    var cardColor = UIColor.green
+    var partOfSet = false
+    static var identifierFactory = 0
     
     //enums for the different methods to draw
-    
     enum Shape: String {
 
         case diamond = "diamond"
@@ -50,33 +61,20 @@ class Card: CustomStringConvertible {
         static var all = [Number.one, .two, .three]
     }
     
-    var cardColor = UIColor.green
-    
-    var partOfSet = false
-    
-    lazy var alpha: CGFloat = cardAlpha.rawValue
-    var isFaceUp = false
-    var selected = false
-    public var identifier: Int
-    var shape: Shape
-    var color: Color
-    var cardAlpha: CardAlpha
-    var number: Number
 
-    static var identifierFactory = 0
-
+    //gets a unique identifier for the card
     static func getUniqueIdentifier() -> Int {
         identifierFactory += 1
         return identifierFactory
     }
     
+    //initialization of the card brains
     init(geometry: Shape, look: Color, shade: CardAlpha, num: Number) {
         self.identifier  = Card.getUniqueIdentifier()
         self.shape = geometry
         self.color = look
         self.cardAlpha = shade
         self.number = num
-        
         print(description)
     }
 }
