@@ -18,6 +18,10 @@ class CardView: UIView {
     
     var cardAlpha: CGFloat = 1.0
     
+    var selected = false
+    var isFaceUp = false
+    var partOfSet = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true

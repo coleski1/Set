@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     //so that certain things load in properly at the beginning
     private var startedGame = false
     
+    private var selectedCards = [CardView]()
+    
     //swipe gesture
     @IBOutlet weak var mainView: MainView! {
         didSet {
@@ -44,25 +46,7 @@ class ViewController: UIViewController {
 
     //for the deal three more button that is also on hiatus
     @IBAction func dealThreeMore(_ sender: UIButton) {
-        if game.cards.count > 2 {
-            let tableCount = game.cardsOnTable.count + 2
-            
-            for index in game.cardsOnTable.count...game.cardsOnTable.count + 2 {
-                game.cards[tableCount - index].isFaceUp = true
-                game.cardsOnTable.append(CardView())
-                game.cardsOnTable[index].color = game.cards[tableCount - index].color.rawValue
-                game.cardsOnTable[index].cardAlpha = game.cards[tableCount - index].cardAlpha.rawValue
-                game.cardsOnTable[index].number = game.cards[tableCount - index].number.rawValue
-                game.cardsOnTable[index].shape = game.cards[tableCount - index].shape.rawValue
-                grid.cellCount = game.cardsOnTable.count
-                mainView.addSubview(game.cardsOnTable[index])
-            }
-            for index in 0...2 {
-                game.cards.remove(at: 2 - index)
-            }
-        }
-        
-        updateViewFromModel()
+       outsideDealThreeMore()
     }
     
     @IBOutlet weak var scoreCounter: UILabel!
@@ -90,20 +74,41 @@ class ViewController: UIViewController {
     }
     
     private func dealCards() {
-        for index in 0...11 {
-            game.cards[index].isFaceUp = true
-            game.cardsOnTable.append(CardView())
-            game.cardsOnTable[index].color = game.cards[index].color.rawValue
-            game.cardsOnTable[index].cardAlpha = game.cards[index].cardAlpha.rawValue
-            game.cardsOnTable[index].number = game.cards[index].number.rawValue
-            game.cardsOnTable[index].shape = game.cards[index].shape.rawValue
-            grid.cellCount = game.cardsOnTable.count
-            mainView.addSubview(game.cardsOnTable[index])
+        for _ in 0...3 {
+            outsideDealThreeMore()
+        }
+    }
+    
+    private func outsideDealThreeMore() {
+        if game.cards.count > 2 {
+            let tableCount = game.cardsOnTable.count + 2
+            
+            for index in game.cardsOnTable.count...game.cardsOnTable.count + 2 {
+                game.cards[tableCount - index].isFaceUp = true
+                game.cardsOnTable.append(CardView())
+                game.cardsOnTable[index].color = game.cards[tableCount - index].color.rawValue
+                game.cardsOnTable[index].cardAlpha = game.cards[tableCount - index].cardAlpha.rawValue
+                game.cardsOnTable[index].number = game.cards[tableCount - index].number.rawValue
+                game.cardsOnTable[index].shape = game.cards[tableCount - index].shape.rawValue
+                grid.cellCount = game.cardsOnTable.count
+                game.cardsOnTable[index].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseCard)))
+                
+                mainView.addSubview(game.cardsOnTable[index])
+            }
+            for index in 0...2 {
+                game.cards.remove(at: 2 - index)
+            }
         }
         
-        for index in 0...11 {
-            game.cards.remove(at: index)
-        }
+        updateViewFromModel()
+    }
+    
+    @objc func chooseCard(_ recognizer: UITapGestureRecognizer) {
+        guard let tappedCard = recognizer.view as? CardView else { return }
+        
+        let cardIndex = game.cardsOnTable.index(of: tappedCard)
+        game.chooseCard(at: cardIndex!)
+        updateViewFromModel()
     }
 }
 
