@@ -19,7 +19,7 @@ class Set {
     public var cardsOnTable = [CardView]()
     
     //matches cards but definitely bloated and needs some work
-    func chooseCard(at index: Int){
+    func chooseCard(at index: Int)  -> Bool{
         if cardsOnTable[index].selected == true {
             cardsOnTable[index].selected = false
             for pleaseCheck in 0...chosenCards.count {
@@ -62,20 +62,32 @@ class Set {
                             cardsOnTable.remove(at: cardsOnTable.index(of: card2)!)
                             
                             chosenCards.removeAll()
-                            print("This is a match")
-                            
+                            return true
                         } else {
-                            for card in chosenCards {
-                                card.selected = false
-                            }
-                            
-                            score = score - 5
-                            chosenCards.removeAll()
+                           return  removeAllChosenCards()
                         }
+                    } else {
+                       return removeAllChosenCards()
                     }
+                } else{
+                    return removeAllChosenCards()
                 }
+            } else {
+               return removeAllChosenCards()
             }
+        } else {
+            return false
         }
+    }
+    
+    func removeAllChosenCards() -> Bool {
+        for card in chosenCards {
+            card.selected = false
+        }
+        
+        score = score - 5
+        chosenCards.removeAll()
+        return false
     }
     
     //gets one of each type to make 81

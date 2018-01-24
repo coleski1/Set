@@ -83,13 +83,19 @@ class ViewController: UIViewController {
         
         updateViewFromModel()
     }
+    var tempChosenCards = [CardView]()
     
     //chooses the card that was clicked on
     @objc func chooseCard(_ recognizer: UITapGestureRecognizer) {
         guard let tappedCard = recognizer.view as? CardView else { return }
-        
+        tempChosenCards.append(tappedCard)
         let cardIndex = game.cardsOnTable.index(of: tappedCard)
-        game.chooseCard(at: cardIndex!)
+        let isSet = game.chooseCard(at: cardIndex!)
+        if isSet == true || tempChosenCards.count == 3{
+            tempChosenCards.forEach {
+                $0.removeFromSuperview()
+            }
+        }
         updateViewFromModel()
     }
 }
