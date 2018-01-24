@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     //the big background view that the grid is written onto
     @IBOutlet weak var mainView: MainView! {
         didSet {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(onDrawCardsSwipe(_:)))
+            swipe.direction = [.down]
+            mainView.addGestureRecognizer(swipe)
+            mainView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: #selector(onReShuffleCards(_:))))
             dealCards()
             updateViewFromModel()
         }
@@ -31,8 +35,8 @@ class ViewController: UIViewController {
             $0.removeFromSuperview()
         }
         game.cardsOnTable.removeAll()
-        let newFunGame = Set()
-        game = newFunGame
+        game = Set()
+
         game.score = 0
         dealCards()
         updateViewFromModel()
@@ -41,6 +45,32 @@ class ViewController: UIViewController {
     //for the deal three more button
     @IBAction func dealThreeMore(_ sender: UIButton) {
        outsideDealThreeMore()
+    }
+    
+    @objc func onDrawCardsSwipe(_ recognizer: UISwipeGestureRecognizer) {
+        outsideDealThreeMore()
+    }
+    
+    @objc func onReShuffleCards(_ recognizer : UIRotationGestureRecognizer) {
+        if recognizer.state == .ended {
+            var cardsShuffled = [CardView]()
+            for _ in game.cardsOnTable {
+                let randomNum = Int(arc4random_uniform(UInt32(game.cardsOnTable.count)))
+                
+                cardsShuffled.append(game.cardsOnTable[randomNum])
+                game.cardsOnTable[randomNum].removeFromSuperview()
+                game.cardsOnTable.remove(at: randomNum)
+                
+            }
+            
+            game.cardsOnTable = cardsShuffled
+            game.cardsOnTable.forEach {
+                print("foreeach ran")
+                mainView.addSubview($0)
+            }
+            updateViewFromModel()
+            
+        }
     }
     
     //updates the view of the game
@@ -90,10 +120,29 @@ class ViewController: UIViewController {
         guard let tappedCard = recognizer.view as? CardView else { return }
         tempChosenCards.append(tappedCard)
         let cardIndex = game.cardsOnTable.index(of: tappedCard)
-        let isSet = game.chooseCard(at: cardIndex!)
-        if isSet == true || tempChosenCards.count == 3{
-            tempChosenCards.forEach {
-                $0.removeFromSuperview()
+        print(tappedCard.borderSelect)
+        if tappedCard.borderSelect == false {
+            tappedCard.borderSelect = true
+            tappedCard.layer.borderWidth = 5.0
+            tappedCard.layer.borderColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        } else {
+            tempChosenCards.remove(at: tempChosenCards.index(of: tappedCard)!)
+            tappedCard.layer.borderWidth = 0
+            tappedCard.borderSelect = false
+        }
+        game.chooseCard(at: cardIndex!)
+        if game.isSet == true || tempChosenCards.count == 3{
+            if game.isSet == true {
+                tempChosenCards.forEach {
+                    $0.removeFromSuperview()
+                }
+                outsideDealThreeMore()
+                game.isSet = false
+            } else if tempChosenCards.count == 3 && game.isSet==false{
+                tempChosenCards.forEach {
+                    $0.layer.borderWidth = 0
+                }
+                tempChosenCards.removeAll()
             }
         }
         updateViewFromModel()
@@ -115,6 +164,20 @@ struct LayOutMetricsForCardView {
     static var borderColorForDrawButton: CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
     static var borderWidthForDrawButton: CGFloat = 3.0
     static var cornerRadius: CGFloat = 8.0
+}
+//creates a random integer, from lecture code
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return  Int(arc4random_uniform(UInt32(self)))
+            
+        } else if  self < 0 {
+            return  -Int(arc4random_uniform(UInt32(abs(self))))
+            
+        } else {
+            return 0
+        }
+    }
 }
 
 

@@ -21,6 +21,7 @@ class CardView: UIView {
     var selected = false
     var isFaceUp = false
     var partOfSet = false
+    var borderSelect = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)

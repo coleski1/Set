@@ -17,12 +17,16 @@ class Set {
     public var cards = [Card]()
     //array of cardviews that are being able to be seen on the screen at once
     public var cardsOnTable = [CardView]()
+    var isSet = false
     
     //matches cards but definitely bloated and needs some work
-    func chooseCard(at index: Int)  -> Bool{
+    func chooseCard(at index: Int) {
         if cardsOnTable[index].selected == true {
             cardsOnTable[index].selected = false
             for pleaseCheck in 0...chosenCards.count {
+                print("cards on table: \(cardsOnTable.count)")
+                print("chosenCards count: \(chosenCards.count)")
+                print("pleaseCheck value: \(pleaseCheck)")
                 if chosenCards[pleaseCheck].hashValue == cardsOnTable[index].hashValue {
                     chosenCards.remove(at: pleaseCheck)
                     break
@@ -62,7 +66,7 @@ class Set {
                             cardsOnTable.remove(at: cardsOnTable.index(of: card2)!)
                             
                             chosenCards.removeAll()
-                            return true
+                            isSet = true
                         } else {
                            return  removeAllChosenCards()
                         }
@@ -75,19 +79,16 @@ class Set {
             } else {
                return removeAllChosenCards()
             }
-        } else {
-            return false
         }
     }
     
-    func removeAllChosenCards() -> Bool {
+    private func removeAllChosenCards() {
         for card in chosenCards {
             card.selected = false
         }
         
         score = score - 5
         chosenCards.removeAll()
-        return false
     }
     
     //gets one of each type to make 81
@@ -119,19 +120,6 @@ class Set {
     }
 }
 
-//creates a random integer, from lecture code
-extension Int {
-    var arc4random: Int {
-        if self > 0 {
-            return  Int(arc4random_uniform(UInt32(self)))
-            
-        } else if  self < 0 {
-            return  -Int(arc4random_uniform(UInt32(abs(self))))
-            
-        } else {
-            return 0
-        }
-    }
-}
+
 
 
