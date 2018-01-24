@@ -19,30 +19,18 @@ class ViewController: UIViewController {
     //swipe gesture
     @IBOutlet weak var mainView: MainView! {
         didSet {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
-            swipe.direction = [.left,.right]
-            mainView.addGestureRecognizer(swipe)
-//            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(cardView.adjustFaceCardScale(byHandlingGestureRecognizedBy:)))
-//            cardView.addGestureRecognizer(pinch)
+//            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
+//            swipe.direction = [.left,.right]
+//            mainView.addGestureRecognizer(swipe)
+////            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(cardView.adjustFaceCardScale(byHandlingGestureRecognizedBy:)))
+////            cardView.addGestureRecognizer(pinch)
             dealCards()
             updateViewFromModel()
         }
     }
     
-    //choose the next card from the deck
-    @objc func nextCard() {
-        if index < game.cardsOnTable.count {
-            print(game.cardsOnTable[index].description)
-            //cardView = game.cardsOnTable[index]
-            index += 1
-        }
-    }
-    
-
-
     //for the newGame button that is on hiatus
     @IBAction func newGame(_ sender: UIButton) {
-        startedGame = true
         game.cardsOnTable.forEach {
             $0.removeFromSuperview()
         }
@@ -56,19 +44,28 @@ class ViewController: UIViewController {
 
     //for the deal three more button that is also on hiatus
     @IBAction func dealThreeMore(_ sender: UIButton) {
-
-        if startedGame {
-            pleaseDealThreeMore()
-            updateViewFromModel()
+        if game.cards.count > 2 {
+            let tableCount = game.cardsOnTable.count + 2
+            
+            for index in game.cardsOnTable.count...game.cardsOnTable.count + 2 {
+                game.cards[tableCount - index].isFaceUp = true
+                game.cardsOnTable.append(CardView())
+                game.cardsOnTable[index].color = game.cards[tableCount - index].color.rawValue
+                game.cardsOnTable[index].cardAlpha = game.cards[tableCount - index].cardAlpha.rawValue
+                game.cardsOnTable[index].number = game.cards[tableCount - index].number.rawValue
+                game.cardsOnTable[index].shape = game.cards[tableCount - index].shape.rawValue
+                grid.cellCount = game.cardsOnTable.count
+                mainView.addSubview(game.cardsOnTable[index])
+            }
+            for index in 0...2 {
+                game.cards.remove(at: 2 - index)
+            }
         }
-        if game.cards.count < 3 {
-            sender.isEnabled = false
-        }
+        
+        updateViewFromModel()
     }
     
     @IBOutlet weak var scoreCounter: UILabel!
-
-    @IBOutlet var cardButtons: [UIButton]!
 
     //for when the card is tapped but out of date since I changed the storyboard
     @IBAction func touchCard(_ sender: UIButton) {
@@ -87,10 +84,7 @@ class ViewController: UIViewController {
     public func updateViewFromModel() {
         for index in game.cardsOnTable.indices {
             let insetXY = (grid[index]?.height ?? 400)/100
-            print(game.cardsOnTable[index].frame.midX)
             game.cardsOnTable[index].frame = grid[index]?.insetBy(dx: insetXY, dy: insetXY) ?? CGRect.zero
-            print(game.cardsOnTable[index].frame.midX)
-
         }
         if scoreCounter != nil {scoreCounter.text! = "Score: \(game.score)"}
     }
@@ -105,38 +99,12 @@ class ViewController: UIViewController {
             game.cardsOnTable[index].shape = game.cards[index].shape.rawValue
             grid.cellCount = game.cardsOnTable.count
             mainView.addSubview(game.cardsOnTable[index])
-            mainView.layoutSubviews()
-
         }
         
         for index in 0...11 {
             game.cards.remove(at: index)
         }
     }
-    
-    //deals three more cards from the array of them
-    public func pleaseDealThreeMore() {
-        if game.cards.count > 3 {
-            for index in 0...2 {
-                game.cards[index].isFaceUp = true
-                game.cardsOnTable.append(CardView())
-                game.cardsOnTable[index].color = game.cards[index].color.rawValue
-                game.cardsOnTable[index].cardAlpha = game.cards[index].cardAlpha.rawValue
-                game.cardsOnTable[index].number = game.cards[index].number.rawValue
-                game.cardsOnTable[index].shape = game.cards[index].shape.rawValue
-                grid.cellCount = game.cardsOnTable.count
-                mainView.addSubview(game.cardsOnTable[index])
-                mainView.layoutSubviews()
-            }
-            for index in 0...2 {
-                game.cards.remove(at: index)
-            }
-        }
-    }
-    
-    
-
-    
 }
 
 struct LayOutMetricsForCardView {

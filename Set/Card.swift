@@ -11,7 +11,6 @@ import UIKit
 
 class Card: CustomStringConvertible {
     
-    
     var description: String {return "\(self.color) - \(self.number) - \(self.shape) - \(self.cardAlpha)"}
     
     //enums for the different methods to draw
