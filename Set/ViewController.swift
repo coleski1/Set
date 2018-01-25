@@ -47,10 +47,12 @@ class ViewController: UIViewController {
        outsideDealThreeMore()
     }
     
+    //when swiping down draw three more cards on the screen
     @objc func onDrawCardsSwipe(_ recognizer: UISwipeGestureRecognizer) {
         outsideDealThreeMore()
     }
     
+    //reshuffle the cards on the screen
     @objc func onReShuffleCards(_ recognizer : UIRotationGestureRecognizer) {
         if recognizer.state == .ended {
             var cardsShuffled = [CardView]()
@@ -65,7 +67,6 @@ class ViewController: UIViewController {
             
             game.cardsOnTable = cardsShuffled
             game.cardsOnTable.forEach {
-                print("foreeach ran")
                 mainView.addSubview($0)
             }
             updateViewFromModel()
